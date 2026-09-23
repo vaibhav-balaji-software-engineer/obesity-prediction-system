@@ -7,7 +7,9 @@ from ml.src.recommend import generate_recommendations
 
 
 app = Flask(__name__)
-CORS(app)
+import os
+
+CORS(app, origins=os.getenv("FRONTEND_URL", "*"))
 
 
 # --------------------------------------------------
@@ -92,4 +94,4 @@ def predict():
 # --------------------------------------------------
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
